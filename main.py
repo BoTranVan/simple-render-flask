@@ -36,8 +36,13 @@ def index():
 
 @app.route('/<route>')
 def render_content(route):
-    res = make_response(render_template('%s/%s' % (route, route)))
-    res.headers["Content-Type"] = 'text/plain'
+    res = ""
+    try:
+        res = make_response(render_template('%s/%s' % (route, route)))
+        res.headers["Content-Type"] = 'text/plain'
+    except:
+        pass
+
     return res
 
 
